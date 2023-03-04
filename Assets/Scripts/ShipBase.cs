@@ -6,7 +6,6 @@ public class ShipBase : MonoBehaviour
 {
     // Adjust the speed for the application.
     public float speed = 10.0f;
-    private 
     // The target (cylinder) position.
     private Transform target;
 
@@ -16,7 +15,7 @@ public class ShipBase : MonoBehaviour
         transform.position = new Vector2(0.0f, 0.0f);
 
         // Create and position the cylinder. Reduce the size.
-        var cylinder = GameObject.CreatePrimitive(asteroidGeneration.Cylinder);
+        var cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         cylinder.transform.localScale = new Vector2(0.15f, 1.0f);
 
         // Grab cylinder values and place on the target.
