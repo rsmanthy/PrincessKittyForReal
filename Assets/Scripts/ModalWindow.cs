@@ -13,5 +13,13 @@ public class ModalWindow : MonoBehaviour
 			ModalPanel.SetActive(true);
 		}
 	}
+
+	public void closeModal()
+	{
+		if (ModalPanel != null)
+		{
+			ModalPanel.SetActive(false);
+		}
+	}
 		
 }
