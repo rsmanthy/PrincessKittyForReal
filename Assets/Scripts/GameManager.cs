@@ -6,11 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public UpgradeManager upgradeManager;
     public GameObject planet;
-    public List<Asteroid> asteroids;
+    public List<GameObject> asteroids;
     public List<Ship> ships;
 
-    public float t = 0;
     public GameObject asteroidPrefab;
+    public GameObject shipPrefab;
+    private int SC = 60;
 
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         // Initalize all game start stuff
         upgradeManager = new UpgradeManager();
-        asteroids = new List<Asteroid>();
+        asteroids = new List<GameObject>();
         ships = new List<Ship>();
 
         // Check for a save file
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
 
         // Starts spawning asteroids
         InvokeRepeating("spawnAsteroids", 0.0f, upgradeManager.asteroidSpawnSpeed);
+        for(int i = 0; i < SC; i++)
+        {
+            Instantiate(shipPrefab, new Vector2(0f, 0f), Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -38,17 +43,19 @@ public class GameManager : MonoBehaviour
         // Call behaviors on everything? Idk   
     }
 
+    public float t = 0;
+
     void spawnAsteroids()
     {
-        float spawnRadius = 4.0f;
+        float spawnRadius = 12.0f + t / 10;
+        t++;
         float angle = Random.Range(0, 2 * Mathf.PI);
 
         int health = 1;
         int oreTier = 1;
 
         Vector2 spawnPosition = spawnRadius * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Asteroid newAsteroid = new Asteroid(health, oreTier);
-        newAsteroid.asteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+        GameObject newAsteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
         asteroids.Add(newAsteroid);
     }
 }

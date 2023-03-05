@@ -14,6 +14,6 @@ public class UpgradeManager
     // Start is called before the first frame update
     public UpgradeManager()
     {
-        asteroidSpawnSpeed = 1.0f;
+        asteroidSpawnSpeed = 0.01f;
     }
 }
