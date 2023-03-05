@@ -1,21 +1,25 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-// public class IncomeCostScript : MonoBehaviour
-// {
-// 	public int totalCost;
+public class IncomeCostScript : MonoBehaviour
+{
+	public Text score;
+	public int increaseIncomeCost;
 
-// 	void levelCost()
-// 	{
-// 		totalCost = PlayerPrefs.GetInt("Cost", 0);
+	void Start() {
+		increaseIncomeCost = 0;
+		score = GetComponent<Text>();
+	}
 
-// 		totalCost++;
+	void Update() {
+		score.text = increaseIncomeCost.ToString();
+	}
 
-// 		PlayerPrefs.SetInt("Score", totalCost);
-// 		PlayerPrefs.Save();
-
-// 		Debug.Log("Score" + totalCost.ToString());
-// 	}
-// }
+	public void IncreaseCose()
+	{
+		increaseIncomeCost += 100;
+	}
+}
