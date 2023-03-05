@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid
+public class Asteroid : MonoBehaviour
 {
     // ##  Visual parameters ##
     // Dictates movement speed
@@ -16,15 +16,13 @@ public class Asteroid
     // Dictates what tier ore asteroid can give at max
     public int oreTier;
 
-    public GameObject asteroid;
-
     public Sprite planetSprite;
     public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
-    public Asteroid(int health, int oreTier)
+    void Awake()
     {
-        this.health = health;
-        this.oreTier = oreTier;
+        this.health = 0;
+        this.oreTier = 0;
     }
 }

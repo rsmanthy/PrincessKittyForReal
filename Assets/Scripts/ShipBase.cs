@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,44 +5,104 @@ using UnityEngine;
 public class ShipBase : MonoBehaviour
 {
     // Adjust the speed for the application.
-    public float speed = 10.0f;
-    private 
+    private float speed = 20.00f;
+    private float mineTime = 0.4f;
+    private float depositTime = 0.4f;
     // The target (cylinder) position.
-    private GameObject target;
-    private bool move = true;
-    private float degrees = -90; 
+    private float degrees = -90f;
+    private float last = -90f;
+    enum Moving { ASTEROID, PLANET, IDLE };
+    private Moving state = Moving.ASTEROID;
 
-    void Awake()
+    public GameManager gameManager;
+    public GameObject planet;
+    public GameObject gameManagerObject;
+    public GameObject target = null;
+
+    void Start()
     {
-        // Position the cube at the origin.
-        transform.position = new Vector2(0.0f, 0.0f);
+        speed = 2.00f;
+        mineTime = 6.0f;
+        depositTime = 8.0f;
 
-        // Create and position the cylinder. Reduce the size.
-        var cylinder = GameObject.CreatePrimitive(asteroidGeneration.Cylinder);
-        cylinder.transform.localScale = new Vector2(0.15f, 1.0f);
-
-        // Grab cylinder values and place on the target.
-        target = cylinder.transform;
-        target.transform.position = new Vector2(0.8f, 0.0f);
-
-        // Position the camera.
-        Camera.main.transform.position = new Vector2(0.85f, 1.0f);
-        Camera.main.transform.localEulerAngles = new Vector2(15.0f, -20.0f);
-
+        planet = GameObject.Find("Planet");
+        gameManagerObject = GameObject.Find("GameManager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
+        selectTarget();
     }
-
     void Update()
     {
-        // Move our position a step closer to the target.
-        var step =  speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector2.MoveTowards(transform.position, target.position, step);
 
-        // Check if the position of the cube and sphere are approximately equal.
-        if (Vector2.Distance(transform.position, target.position) < 0.001f)
+        speed = 1;
+        mineTime = 0.4f;
+        depositTime = 0.4f;
+        if (target != null && state != Moving.IDLE)
         {
-            // Swap the position of the cylinder.
-            target.position *= -1.0f;
+            GetComponent<SpriteRenderer>().enabled = true;
+            var step = speed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
+            transform.eulerAngles = Vector3.forward * (degrees + Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * Mathf.Rad2Deg);
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+        if (target == null)
+        {
+            //Debug.Log("Selecting Target");
+            selectTarget();
+        }
+        if (target != null && state == Moving.ASTEROID)
+        {
+            // Check if the position of the ship and asteroid are approximately equal.
+            if (Vector2.Distance(transform.position, target.transform.position) < 0.001f)
+            {
+                StartCoroutine(mine());
+                state = Moving.IDLE;
+    
+            }
+        } 
+        else if(target != null && state == Moving.PLANET) {
+            // Check if the position of the ship and home are approximately equal.
+            if (Vector2.Distance(transform.position, target.transform.position) < 0.001f)
+            {
+                //GetComponent<SpriteRenderer>().enabled = false;
+                state = Moving.IDLE;
+                StartCoroutine(depositResources());
+                selectTarget();
+            }
         }
     }
->>>>>>> ShipFollowingAsteroids
+    IEnumerator mine()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(mineTime);
+        GetComponent<SpriteRenderer>().enabled = true;
+        state = Moving.PLANET;
+        Destroy(target);
+        target = planet;
+    }
+
+    // Selects next asteroid as target, return 0 on failure and 1 on success
+    void selectTarget()
+    {
+        target = null;
+        if (gameManager)
+        {
+            int asteroidListSize = gameManager.asteroids.Count;
+            Debug.Log(asteroidListSize);
+            if (asteroidListSize != 0)
+            {
+                target = gameManager.asteroids[(int)Random.Range(0, asteroidListSize)];
+                //Debug.Log("Found something");
+            }
+        }
+    }
+    IEnumerator depositResources(){
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(depositTime);
+        GetComponent<SpriteRenderer>().enabled = true;
+        state = Moving.ASTEROID;
+        selectTarget();
+    }
 }
