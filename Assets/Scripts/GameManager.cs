@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class GameManager : MonoBehaviour
     public List<GameObject> asteroids;
     public List<GameObject> ships;
 
+    public TextMeshProUGUI moneyText;
+
     public GameObject asteroidPrefab;
     public GameObject shipPrefab;
     public Camera camera;
     private float timer = 0;
+
+    public long money = 0;
+    public int multiplier = 5;
 
     // Speed in which asteroids spawn
     public float shipSpeed;
@@ -20,6 +26,15 @@ public class GameManager : MonoBehaviour
     private float asteroidSpawnSpeed = 10.0f;
     public int shipCount = 1;
 
+    void upgradeSpawnSpeed()
+    {
+        asteroidSpawnSpeed = asteroidSpawnSpeed * 0.9f;
+    }
+
+    public void addShip()
+    {
+        shipCount++;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moneyText.text = "Money: " + money.ToString();
         // Spawn asteroid
         timer += Time.deltaTime;
         if (timer > asteroidSpawnSpeed)

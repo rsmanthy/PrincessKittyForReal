@@ -5,9 +5,9 @@ using UnityEngine;
 public class ShipBase : MonoBehaviour
 {
     // Adjust the speed for the application.
-    private float speed = 20.00f;
-    private float mineTime = 0.4f;
-    private float depositTime = 0.4f;
+    private float speed;
+    private float mineTime;
+    private float depositTime;
     // The target (cylinder) position.
     private float degrees = -90f;
     private float last = -90f;
@@ -101,6 +101,7 @@ public class ShipBase : MonoBehaviour
     IEnumerator depositResources(){
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(depositTime);
+        gameManager.money += gameManager.multiplier;
         GetComponent<SpriteRenderer>().enabled = true;
         state = Moving.ASTEROID;
         selectTarget();
