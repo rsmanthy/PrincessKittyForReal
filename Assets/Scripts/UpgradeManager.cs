@@ -7,6 +7,8 @@ public class UpgradeManager
     // ##  Visual parameters ##
     // ##  Functional parameters ##
     // Speed in which asteroids spawn
+    public float shipSpeed;
+    // Speed in which asteroids spawn
     public float asteroidSpawnSpeed;
 
     public GameObject upgradeManager;
@@ -14,6 +16,6 @@ public class UpgradeManager
     // Start is called before the first frame update
     public UpgradeManager()
     {
-        asteroidSpawnSpeed = 0.01f;
+        asteroidSpawnSpeed = 10f;
     }
 }

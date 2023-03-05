@@ -21,6 +21,10 @@ public class ShipBase : MonoBehaviour
 
     void Start()
     {
+        speed = 2.00f;
+        mineTime = 6.0f;
+        depositTime = 8.0f;
+
         planet = GameObject.Find("Planet");
         gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
@@ -28,6 +32,10 @@ public class ShipBase : MonoBehaviour
     }
     void Update()
     {
+
+        speed = 1;
+        mineTime = 0.4f;
+        depositTime = 0.4f;
         if (target != null && state != Moving.IDLE)
         {
             GetComponent<SpriteRenderer>().enabled = true;

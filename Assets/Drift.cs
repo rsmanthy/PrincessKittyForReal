@@ -7,7 +7,7 @@ public class Drift : MonoBehaviour
     // Start is called before the first frame update
     private float dir;
     private float moment;
-    private float speed = 0.0001f;
+    private float speed = 0.001f;
     void Start()
     {
         dir = Random.Range(0, 2 * Mathf.PI);
