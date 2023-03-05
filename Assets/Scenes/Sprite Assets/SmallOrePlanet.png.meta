@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 1709faaac977fe148a4b2cfdc212db67
+=======
+guid: 646456b352d240c4f9031c187ae8ae53
+>>>>>>> ShipFollowingAsteroids
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
