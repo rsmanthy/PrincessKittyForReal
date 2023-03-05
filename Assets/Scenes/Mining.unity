@@ -252,11 +252,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 138047229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae794c2f0b589d84f9a93dc9a6cddf52, type: 3}
+  m_Script: {fileID: 11500000, guid: 484908ab5c13d994cb4e58d72c9ee5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 307377501}
+  move: 1
+  state: 0
   delay: 0
+  targetLocation: {x: 0, y: 0}
   spriteRenderer: {fileID: 0}
   newSprite: {fileID: 0}
   myPrefab: {fileID: 2134364681}
@@ -319,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138047229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.62, y: -3.3, z: 0}
+  m_LocalPosition: {x: -6.05, y: -3.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -503,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307377501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.52, y: -3.81, z: 0}
+  m_LocalPosition: {x: -5.94, y: -3.81, z: 0}
   m_LocalScale: {x: 2.6462598, y: 2.298221, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -891,7 +894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730201947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.53, y: -2.11, z: 0}
+  m_LocalPosition: {x: -2.04, y: -2.07, z: 0}
   m_LocalScale: {x: 0.6482182, y: 0.56191856, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1363,7 +1366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371073801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.35, y: -3.42, z: 0}
+  m_LocalPosition: {x: 4.84, y: -3.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1378,11 +1381,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1371073801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae794c2f0b589d84f9a93dc9a6cddf52, type: 3}
+  m_Script: {fileID: 11500000, guid: 484908ab5c13d994cb4e58d72c9ee5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1555813143}
+  move: 1
+  state: 0
   delay: 3
+  targetLocation: {x: 0, y: 0}
   spriteRenderer: {fileID: 0}
   newSprite: {fileID: 0}
   myPrefab: {fileID: 2134364681}
@@ -1462,7 +1468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555813143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.43, y: -3.81, z: 0}
+  m_LocalPosition: {x: 5.05, y: -3.84, z: 0}
   m_LocalScale: {x: 2.6462598, y: 2.298221, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
