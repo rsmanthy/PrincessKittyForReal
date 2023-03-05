@@ -27,18 +27,25 @@ public class package : MonoBehaviour
             /*
                 Increment balance based off ship ore capacity
             */
-            newSprite = Resources.Load<Sprite>("OpenCrate");
-            ChangeSprite();
-            Destroy(gameObject,5);
+            if(name != "CatCrate")
+            {
+                newSprite = Resources.Load<Sprite>("OpenCrate");
+                ChangeSprite();
+            }
+
         }
-        var step =  3 * Time.deltaTime; // calculate distance to move
+        var step = 2 * Time.deltaTime; // calculate distance to move
         transform.position = Vector2.MoveTowards(transform.position, targetLocation, step);
         if (Vector2.Distance(transform.position, targetLocation) < 0.001f)
         {
             /*
                 Increment balance based off ship ore capacity
             */
-            Destroy(gameObject);
+            if(name != "CatCrate")
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 }
