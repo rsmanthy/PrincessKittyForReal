@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship
+public class Ship : MonoBehaviour
 {
     // ##  Visual parameters ##
     public float size;

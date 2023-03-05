@@ -16,15 +16,15 @@ public class Asteroid
     // Dictates what tier ore asteroid can give at max
     public int oreTier;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject asteroid;
 
-    // Update is called once per frame
-    void Update()
+    public Sprite planetSprite;
+    public SpriteRenderer spriteRenderer;
+
+    // Start is called before the first frame update
+    public Asteroid(int health, int oreTier)
     {
-        
+        this.health = health;
+        this.oreTier = oreTier;
     }
 }
