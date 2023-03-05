@@ -523,10 +523,10 @@ RectTransform:
   m_Father: {fileID: 1963087246}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -20}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1664729537
 MonoBehaviour:
@@ -619,10 +619,10 @@ RectTransform:
   m_Father: {fileID: 1963087246}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -172.5}
+  m_SizeDelta: {x: 400, y: 255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754376881
 MonoBehaviour:
@@ -795,6 +795,7 @@ GameObject:
   - component: {fileID: 1838005754}
   - component: {fileID: 1838005753}
   - component: {fileID: 1838005752}
+  - component: {fileID: 1838005755}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -865,7 +866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1838005753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1838005755}
+        m_TargetAssemblyTypeName: ModalWindow, Assembly-CSharp
+        m_MethodName: openModal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1838005753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +917,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838005750}
   m_CullTransparentMesh: 1
+--- !u!114 &1838005755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838005750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca3d1d7658ec44beb01620438da7902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModalPanel: {fileID: 2013806552}
 --- !u!1 &1963087245
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,12 +1006,12 @@ GameObject:
   - component: {fileID: 2013806555}
   - component: {fileID: 2013806554}
   m_Layer: 5
-  m_Name: Modal Panel
+  m_Name: ModalPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2013806553
 RectTransform:
   m_ObjectHideFlags: 0
