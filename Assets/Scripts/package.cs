@@ -16,7 +16,13 @@ public class package : MonoBehaviour
     }
     void Update()
     {
-        var step =  4 * Time.deltaTime; // calculate distance to move
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse is down");
+            Destroy(gameObject);
+        }
+         
+        var step =  3 * Time.deltaTime; // calculate distance to move
         transform.position = Vector2.MoveTowards(transform.position, targetLocation, step);
         if (Vector2.Distance(transform.position, targetLocation) < 0.001f)
         {
