@@ -5,9 +5,13 @@ using UnityEngine;
 public class ShipBase : MonoBehaviour
 {
     // Adjust the speed for the application.
+<<<<<<< HEAD
     public float speed = 1.0f;
     private int state = 0;
     public float mineTime = 2;
+=======
+    public float speed = 10.0f;
+>>>>>>> 1066fbc1457b473ae2b22248bd837f2082414bb0
     // The target (cylinder) position.
     private GameObject target;
     private bool move = true;
@@ -18,6 +22,7 @@ public class ShipBase : MonoBehaviour
         // Position the ship at the origin.
         transform.position = new Vector2(0.0f, 0.0f);
 
+<<<<<<< HEAD
         // Test asteroids for script
         //-----------------------------------------------
         // var asteroid = GameObject.Find("RockPlanet");
@@ -36,6 +41,19 @@ public class ShipBase : MonoBehaviour
         // asteroid.transform.localScale = new Vector2(1.0f, 1.0f);
         // target = asteroid;
         // target.transform.position = new Vector2(-5f, 3f);
+=======
+        // Create and position the cylinder. Reduce the size.
+        var cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        cylinder.transform.localScale = new Vector2(0.15f, 1.0f);
+
+        // Grab cylinder values and place on the target.
+        target = cylinder.transform;
+        target.transform.position = new Vector2(0.8f, 0.0f);
+
+        // Position the camera.
+        Camera.main.transform.position = new Vector2(0.85f, 1.0f);
+        Camera.main.transform.localEulerAngles = new Vector2(15.0f, -20.0f);
+>>>>>>> 1066fbc1457b473ae2b22248bd837f2082414bb0
 
         // first start
         StartCoroutine(newTarget());
